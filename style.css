@@ -1,0 +1,190 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family: Georgia, serif;
+    background:#ece8e1;
+    color:#2f2f2f;
+    height:100vh;
+}
+
+/* -------------------- */
+
+#password-screen{
+
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.login-box{
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:12px;
+
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
+
+    text-align:center;
+
+    width:320px;
+}
+
+.login-box h1{
+
+    margin-bottom:25px;
+
+    font-weight:normal;
+}
+
+.login-box input{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-bottom:20px;
+
+    border:none;
+
+    border-bottom:1px solid #999;
+
+    outline:none;
+
+    font-size:16px;
+}
+
+.login-box button{
+
+    background:#3b4b5b;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 24px;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.login-box button:hover{
+
+    background:#202d39;
+}
+
+/* -------------------- */
+
+#letter-page{
+
+    display:none;
+
+    min-height:100vh;
+
+    padding:60px;
+
+    animation:fade 2s ease;
+}
+
+/* -------------------- */
+
+.letter{
+
+    max-width:750px;
+
+    margin:auto;
+
+    background:white;
+
+    padding:70px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+    border-radius:6px;
+
+    line-height:2;
+
+    animation:openLetter 1.8s ease;
+}
+
+.letter h2{
+
+    margin-bottom:40px;
+
+    font-weight:normal;
+}
+
+.music{
+
+    text-align:center;
+
+    margin-bottom:35px;
+}
+
+.music button{
+
+    padding:14px 25px;
+
+    border:none;
+
+    background:#3b4b5b;
+
+    color:white;
+
+    cursor:pointer;
+
+    border-radius:8px;
+
+    transition:.3s;
+}
+
+.music button:hover{
+
+    background:#202d39;
+}
+
+/* -------------------- */
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+    }
+
+    to{
+
+        opacity:1;
+    }
+
+}
+
+@keyframes openLetter{
+
+    0%{
+
+        transform:translateY(60px) scale(.9);
+
+        opacity:0;
+
+    }
+
+    100%{
+
+        transform:translateY(0) scale(1);
+
+        opacity:1;
+
+    }
+
+}
