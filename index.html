@@ -1,1 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lettre pour Orianne</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div id="password-screen">
+
+    <div class="login-box">
+
+        <h1>Une lettre t'attend...</h1>
+
+        <input
+        type="password"
+        id="password"
+        placeholder="Mot de passe">
+
+        <button onclick="checkPassword()">
+            Ouvrir
+        </button>
+
+        <p id="error"></p>
+
+    </div>
+
+</div>
+
+<div id="letter-page">
+
+    <div class="music">
+        <button id="musicBtn">
+            ▶ Lancer la musique
+        </button>
+    </div>
+
+    <audio id="music">
+        <source src="musique.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="letter">
+
+        <h2>Le silence.</h2>
+
+        <p>
+
+        Celui qui n’est pas vide.
+
+        </p>
+
+        <p>
+
+        Celui qui m’accompagne quand t’es loin. Celui qui
+s’installe dans les moments où j’aimerais juste entendre
+ta voix. Celui qui me suit et qui porte un peu de toi en
+lui.
+
+        </p>
+
+        <p>
+
+        Celui qu’on partage au moment où nos corps s’enlacent.
+Celui qui n’a pas besoin de mots parce que nos mains
+parlent à leur place.
+Celui qui nous accompagne quand je te regarde sans que tu
+ne t’en rendes comptes. Celui qui est tout autour de moi,
+constamment et qui rythme mon envie de le rompre en
+entendant ton rire.
+          
+        </p>
+
+        <p>
+
+        Dans quelques jours, ce silence va changer de nature. Ce
+sera plus celui de la distance, mais celui qu’on laisse
+s’installer par tendresse.
+
+        </p>
+
+        <br>
+
+        <p>
+        Et je crois que c’est mon silence préféré.
+G.
+        </p>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
