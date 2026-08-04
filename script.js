@@ -58,58 +58,6 @@ function verifyPassword(){
 }
 
 /*==================================================
-    ANIMATION DE LA LETTRE
-==================================================*/
-
-function launchLetterAnimation(){
-
-    const envelope = document.querySelector(".envelope");
-
-    envelope.classList.add("open");
-
-    setTimeout(function(){
-
-        typeWriter();
-
-    },1900);
-
-}
-
-/*==================================================
-    EFFET MACHINE À ÉCRIRE
-==================================================*/
-
-const letter = document.getElementById("letterText");
-
-const originalHTML = letter.innerHTML;
-
-letter.innerHTML = "";
-
-function typeWriter(){
-
-    let i = 0;
-
-    const speed = 18;
-
-    function write(){
-
-        if(i < originalHTML.length){
-
-            letter.innerHTML += originalHTML.charAt(i);
-
-            i++;
-
-            setTimeout(write, speed);
-
-        }
-
-    }
-
-    write();
-
-}
-
-/*==================================================
     MUSIQUE
 ==================================================*/
 
