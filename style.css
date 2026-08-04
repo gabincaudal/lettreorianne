@@ -1,179 +1,506 @@
+/* ==========================================================
+   RESET
+========================================================== */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
 
-    font-family: Georgia, serif;
-    background:#ece8e1;
+    background:#1c2331;
     color:#2f2f2f;
-    height:100vh;
-}
 
-/* -------------------- */
+    font-family:'Cormorant Garamond',serif;
 
-#password-screen{
-
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.login-box{
-
-    background:white;
-
-    padding:40px;
-
-    border-radius:12px;
-
-    box-shadow:0 15px 30px rgba(0,0,0,.15);
-
-    text-align:center;
-
-    width:320px;
-}
-
-.login-box h1{
-
-    margin-bottom:25px;
-
-    font-weight:normal;
-}
-
-.login-box input{
-
-    width:100%;
-
-    padding:12px;
-
-    margin-bottom:20px;
-
-    border:none;
-
-    border-bottom:1px solid #999;
-
-    outline:none;
-
-    font-size:16px;
-}
-
-.login-box button{
-
-    background:#3b4b5b;
-
-    color:white;
-
-    border:none;
-
-    padding:12px 24px;
-
-    border-radius:5px;
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.login-box button:hover{
-
-    background:#202d39;
-}
-
-/* -------------------- */
-
-#letter-page{
-
-    display:none;
-
+    overflow-x:hidden;
     min-height:100vh;
-
-    padding:60px;
-
-    animation:fade 2s ease;
 }
 
-/* -------------------- */
+/* ==========================================================
+   FOND
+========================================================== */
 
-.letter{
+body::before{
 
-    max-width:750px;
+    content:"";
 
-    margin:auto;
+    position:fixed;
+
+    inset:0;
+
+    background:
+        radial-gradient(circle at top,#33415c 0%,#1c2331 70%);
+
+    z-index:-20;
+
+}
+
+/* ==========================================================
+   PARTICULES
+========================================================== */
+
+#snow{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:-5;
+
+}
+
+.snowflake{
+
+    position:absolute;
+
+    top:-10px;
 
     background:white;
 
-    padding:70px;
+    border-radius:50%;
 
-    box-shadow:0 15px 35px rgba(0,0,0,.12);
+    opacity:.85;
 
-    border-radius:6px;
+    animation-name:snowFall;
 
-    line-height:2;
+    animation-timing-function:linear;
 
-    animation:openLetter 1.8s ease;
+    animation-iteration-count:infinite;
+
 }
 
-.letter h2{
-
-    margin-bottom:40px;
-
-    font-weight:normal;
-}
-
-.music{
-
-    text-align:center;
-
-    margin-bottom:35px;
-}
-
-.music button{
-
-    padding:14px 25px;
-
-    border:none;
-
-    background:#3b4b5b;
-
-    color:white;
-
-    cursor:pointer;
-
-    border-radius:8px;
-
-    transition:.3s;
-}
-
-.music button:hover{
-
-    background:#202d39;
-}
-
-/* -------------------- */
-
-@keyframes fade{
+@keyframes snowFall{
 
     from{
 
-        opacity:0;
+        transform:translateY(-20px);
+
     }
 
     to{
 
-        opacity:1;
+        transform:translateY(110vh);
+
     }
 
 }
 
-@keyframes openLetter{
+/* ==========================================================
+   PAGE MOT DE PASSE
+========================================================== */
+
+#loginScreen{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+}
+
+.loginBox{
+
+    width:420px;
+
+    padding:45px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:18px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+
+}
+
+.loginBox h1{
+
+    color:white;
+
+    font-size:2.2rem;
+
+    font-weight:500;
+
+    margin-bottom:15px;
+
+}
+
+.loginBox p{
+
+    color:#d7d7d7;
+
+    margin-bottom:30px;
+
+    font-size:1.1rem;
+
+}
+
+.loginBox input{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:10px;
+
+    margin-bottom:20px;
+
+    outline:none;
+
+    font-size:1rem;
+
+    font-family:inherit;
+
+}
+
+.loginBox button{
+
+    width:100%;
+
+    padding:15px;
+
+    background:#bfa06f;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    font-size:1rem;
+
+}
+
+.loginBox button:hover{
+
+    transform:translateY(-2px);
+
+    background:#c9ab79;
+
+}
+
+#errorMessage{
+
+    color:#ffb1b1;
+
+    margin-top:20px;
+
+}
+
+/* ==========================================================
+   PAGE PRINCIPALE
+========================================================== */
+
+#mainPage{
+
+    display:none;
+
+    opacity:0;
+
+    transition:opacity 1s;
+
+    padding:50px 20px 120px;
+
+}
+
+/* ==========================================================
+   MUSIQUE
+========================================================== */
+
+.musicContainer{
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+}
+
+#musicButton{
+
+    padding:14px 30px;
+
+    background:#bfa06f;
+
+    color:white;
+
+    border:none;
+
+    border-radius:40px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    font-size:1rem;
+
+}
+
+#musicButton:hover{
+
+    transform:scale(1.05);
+
+}
+
+/* ==========================================================
+   ENVELOPPE
+========================================================== */
+
+.envelopeContainer{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:30px;
+
+}
+
+.envelope{
+
+    position:relative;
+
+    width:900px;
+
+    max-width:95%;
+
+    height:680px;
+
+    perspective:1500px;
+
+}
+
+.envelopeTop{
+
+    position:absolute;
+
+    width:100%;
+
+    height:220px;
+
+    background:#d7cab7;
+
+    clip-path:polygon(0 0,100% 0,50% 100%);
+
+    transform-origin:top;
+
+    z-index:5;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.25);
+
+}
+
+/* ==========================================================
+   FEUILLE
+========================================================== */
+
+.paper{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    background:#fbf7f1;
+
+    border-radius:8px;
+
+    padding:80px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.30);
+
+    line-height:2;
+
+    transform:translateY(180px);
+
+    opacity:0;
+
+}
+
+.paper h2{
+
+    margin-bottom:45px;
+
+    font-size:2rem;
+
+    font-weight:500;
+
+}
+
+.date{
+
+    text-align:right;
+
+    color:#666;
+
+    font-style:italic;
+
+    margin-bottom:50px;
+
+}
+
+#letterText{
+
+    font-size:1.35rem;
+
+}
+
+/* ==========================================================
+   CARTE
+========================================================== */
+
+.mapSection{
+
+    margin-top:90px;
+
+    text-align:center;
+
+}
+
+.mapSection h3{
+
+    color:white;
+
+    font-size:2rem;
+
+    font-weight:400;
+
+    margin-bottom:30px;
+
+}
+
+.mapContainer{
+
+    position:relative;
+
+    width:1000px;
+
+    max-width:95%;
+
+    margin:auto;
+
+}
+
+.mapContainer img{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:12px;
+
+    box-shadow:0 15px 45px rgba(0,0,0,.35);
+
+}
+
+/* ==========================================================
+   POINT SUR LA POLOGNE
+========================================================== */
+
+#polandMarker{
+
+    position:absolute;
+
+    width:16px;
+
+    height:16px;
+
+    background:#ff3a3a;
+
+    border-radius:50%;
+
+    left:56.8%;
+
+    top:29%;
+
+    transform:translate(-50%,-50%);
+
+    box-shadow:0 0 20px red;
+
+    animation:pulse 2s infinite;
+
+}
+
+@keyframes pulse{
 
     0%{
 
-        transform:translateY(60px) scale(.9);
+        transform:translate(-50%,-50%) scale(1);
+
+    }
+
+    50%{
+
+        transform:translate(-50%,-50%) scale(1.6);
+
+    }
+
+    100%{
+
+        transform:translate(-50%,-50%) scale(1);
+
+    }
+
+}
+
+/* ==========================================================
+   ANIMATIONS
+========================================================== */
+
+.envelope.open .envelopeTop{
+
+    animation:openEnvelope 1.6s forwards;
+
+}
+
+.envelope.open .paper{
+
+    animation:paperUp 2s forwards;
+
+}
+
+@keyframes openEnvelope{
+
+    to{
+
+        transform:rotateX(-180deg);
+
+    }
+
+}
+
+@keyframes paperUp{
+
+    0%{
+
+        transform:translateY(180px);
 
         opacity:0;
 
@@ -181,9 +508,49 @@ body{
 
     100%{
 
-        transform:translateY(0) scale(1);
+        transform:translateY(0);
 
         opacity:1;
+
+    }
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:768px){
+
+    .loginBox{
+
+        width:95%;
+
+        padding:35px;
+
+    }
+
+    .paper{
+
+        padding:35px;
+
+    }
+
+    #letterText{
+
+        font-size:1.15rem;
+
+    }
+
+    .paper h2{
+
+        font-size:1.6rem;
+
+    }
+
+    .mapSection h3{
+
+        font-size:1.6rem;
 
     }
 
