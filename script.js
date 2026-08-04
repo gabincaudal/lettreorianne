@@ -1,188 +1,188 @@
-/*==================================================
-    MOT DE PASSE
-==================================================*/
+/* =========================================
+   MOT DE PASSE
+========================================= */
 
-const PASSWORD = "marspoland";
+
+const password = "marspoland";
+
+
+const passwordInput = document.getElementById("passwordInput");
 
 const loginButton = document.getElementById("loginButton");
-const passwordInput = document.getElementById("passwordInput");
+
 const errorMessage = document.getElementById("errorMessage");
 
+
 const loginScreen = document.getElementById("loginScreen");
+
 const mainPage = document.getElementById("mainPage");
 
-loginButton.addEventListener("click", verifyPassword);
+
+
+loginButton.addEventListener("click", checkPassword);
+
+
 
 passwordInput.addEventListener("keydown", function(event){
 
+
     if(event.key === "Enter"){
 
-        verifyPassword();
+        checkPassword();
 
     }
+
 
 });
 
-function verifyPassword(){
 
-    if(passwordInput.value.trim() === PASSWORD){
 
-        loginScreen.style.opacity = "0";
+function checkPassword(){
 
-        setTimeout(function(){
 
-            loginScreen.style.display = "none";
+    if(passwordInput.value.toLowerCase() === password){
 
-            mainPage.style.display = "block";
 
-            setTimeout(function(){
+        loginScreen.style.display = "none";
 
-                mainPage.style.opacity = "1";
 
-            },50);
+        mainPage.style.display = "block";
 
-            launchLetterAnimation();
 
-        },700);
 
     }
 
-    else{
+    else {
+
 
         errorMessage.textContent = "Mot de passe incorrect.";
 
         passwordInput.value = "";
 
-    }
-
-}
-
-/*==================================================
-    MUSIQUE
-==================================================*/
-
-const music = document.getElementById("music");
-const musicButton = document.getElementById("musicButton");
-
-music.volume = 0;
-
-let playing = false;
-
-musicButton.addEventListener("click", function(){
-
-    if(!playing){
-
-        music.play();
-
-        fadeIn();
-
-        musicButton.textContent = "❚❚ Pause";
 
     }
 
-    else{
-
-        fadeOut();
-
-        musicButton.textContent = "▶ Lancer la musique";
-
-    }
-
-    playing = !playing;
-
-});
-
-function fadeIn(){
-
-    let volume = 0;
-
-    music.volume = 0;
-
-    const interval = setInterval(function(){
-
-        volume += 0.05;
-
-        if(volume >= 1){
-
-            volume = 1;
-
-            clearInterval(interval);
-
-        }
-
-        music.volume = volume;
-
-    },120);
 
 }
 
-function fadeOut(){
 
-    let volume = music.volume;
 
-    const interval = setInterval(function(){
 
-        volume -= 0.05;
+/* =========================================
+   NEIGE
+========================================= */
 
-        if(volume <= 0){
 
-            volume = 0;
+const snowContainer = document.getElementById("snow");
 
-            clearInterval(interval);
 
-            music.pause();
-
-        }
-
-        music.volume = volume;
-
-    },120);
-
-}
-
-/*==================================================
-    FLOCONS DE NEIGE
-==================================================*/
-
-const snow = document.getElementById("snow");
 
 function createSnowflake(){
 
-    const flake = document.createElement("div");
 
-    flake.classList.add("snowflake");
+    const snowflake = document.createElement("div");
 
-    const size = Math.random()*6+2;
 
-    flake.style.width = size+"px";
-    flake.style.height = size+"px";
+    snowflake.classList.add("snowflake");
 
-    flake.style.left = Math.random()*100+"vw";
 
-    flake.style.animationDuration =
-        (Math.random()*8+6)+"s";
 
-    flake.style.opacity =
+    const size = Math.random() * 6 + 3;
+
+
+
+    snowflake.style.width = size + "px";
+
+    snowflake.style.height = size + "px";
+
+
+
+    snowflake.style.left = Math.random() * 100 + "vw";
+
+
+
+    snowflake.style.animationDuration =
+
+        Math.random() * 8 + 6 + "s";
+
+
+
+    snowflake.style.opacity =
+
         Math.random();
 
-    snow.appendChild(flake);
+
+
+    snowContainer.appendChild(snowflake);
+
+
 
     setTimeout(function(){
 
-        flake.remove();
+
+        snowflake.remove();
+
 
     },15000);
 
+
+
 }
+
+
 
 setInterval(createSnowflake,180);
 
-/*==================================================
-    CURSEUR DANS LE CHAMP
-==================================================*/
 
-window.onload = function(){
 
-    passwordInput.focus();
 
-};
+
+
+/* =========================================
+   MUSIQUE
+========================================= */
+
+
+const music = document.getElementById("music");
+
+const musicButton = document.getElementById("musicButton");
+
+
+let musicPlaying = false;
+
+
+
+musicButton.addEventListener("click", function(){
+
+
+
+    if(musicPlaying === false){
+
+
+        music.play();
+
+
+        musicButton.textContent = "❚❚ Pause";
+
+        musicPlaying = true;
+
+
+    }
+
+
+    else{
+
+
+        music.pause();
+
+
+        musicButton.textContent = "▶ Lancer la musique";
+
+        musicPlaying = false;
+
+
+    }
+
+
+
+});
