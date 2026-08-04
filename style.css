@@ -269,54 +269,6 @@ body::before{
 }
 
 /* ==========================================================
-   ENVELOPPE
-========================================================== */
-
-.envelopeContainer{
-
-    display:flex;
-
-    justify-content:center;
-
-    margin-top:30px;
-
-}
-
-.envelope{
-
-    position:relative;
-
-    width:900px;
-
-    max-width:95%;
-
-    height:680px;
-
-    perspective:1500px;
-
-}
-
-.envelopeTop{
-
-    position:absolute;
-
-    width:100%;
-
-    height:220px;
-
-    background:#d7cab7;
-
-    clip-path:polygon(0 0,100% 0,50% 100%);
-
-    transform-origin:top;
-
-    z-index:5;
-
-    box-shadow:0 4px 10px rgba(0,0,0,.25);
-
-}
-
-/* ==========================================================
    FEUILLE
 ========================================================== */
 
