@@ -1,509 +1,577 @@
-/* ==========================================================
-   RESET
-========================================================== */
+/* =========================================
+   RESET GENERAL
+========================================= */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
 
-body{
+body {
 
-    background:#1c2331;
-    color:#2f2f2f;
+    min-height: 100vh;
 
-    font-family:'Cormorant Garamond',serif;
-
-    overflow-x:hidden;
-    min-height:100vh;
-}
-
-/* ==========================================================
-   FOND
-========================================================== */
-
-body::before{
-
-    content:"";
-
-    position:fixed;
-
-    inset:0;
+    font-family: "Cormorant Garamond", serif;
 
     background:
-        radial-gradient(circle at top,#33415c 0%,#1c2331 70%);
+        radial-gradient(
+            circle at top,
+            #34445c,
+            #18202e 70%
+        );
 
-    z-index:-20;
+    color: #2f2b27;
 
-}
-
-/* ==========================================================
-   PARTICULES
-========================================================== */
-
-#snow{
-
-    position:fixed;
-
-    inset:0;
-
-    overflow:hidden;
-
-    pointer-events:none;
-
-    z-index:-5;
+    overflow-x: hidden;
 
 }
 
-.snowflake{
 
-    position:absolute;
+/* =========================================
+   PARTICULES NEIGE
+========================================= */
 
-    top:-10px;
 
-    background:white;
+#snow {
 
-    border-radius:50%;
+    position: fixed;
 
-    opacity:.85;
+    inset: 0;
 
-    animation-name:snowFall;
+    pointer-events: none;
 
-    animation-timing-function:linear;
+    overflow: hidden;
 
-    animation-iteration-count:infinite;
+    z-index: 1;
 
 }
 
-@keyframes snowFall{
 
-    from{
+.snowflake {
 
-        transform:translateY(-20px);
+    position: absolute;
+
+    top: -10px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    opacity: 0.7;
+
+    animation: snowfall linear infinite;
+
+}
+
+
+@keyframes snowfall {
+
+
+    from {
+
+        transform: translateY(-20px);
 
     }
 
-    to{
 
-        transform:translateY(110vh);
+    to {
+
+        transform: translateY(110vh);
 
     }
 
 }
 
-/* ==========================================================
+
+
+/* =========================================
    PAGE MOT DE PASSE
-========================================================== */
+========================================= */
 
-#loginScreen{
 
-    min-height:100vh;
+#loginScreen {
 
-    display:flex;
 
-    justify-content:center;
+    height: 100vh;
 
-    align-items:center;
+    display: flex;
 
-    padding:40px;
+    justify-content: center;
 
-}
+    align-items: center;
 
-.loginBox{
+    padding: 20px;
 
-    width:420px;
+    position: relative;
 
-    padding:45px;
-
-    text-align:center;
-
-    background:rgba(255,255,255,.08);
-
-    backdrop-filter:blur(12px);
-
-    border:1px solid rgba(255,255,255,.15);
-
-    border-radius:18px;
-
-    box-shadow:0 20px 60px rgba(0,0,0,.35);
+    z-index: 2;
 
 }
 
-.loginBox h1{
 
-    color:white;
 
-    font-size:2.2rem;
+.loginBox {
 
-    font-weight:500;
 
-    margin-bottom:15px;
+    width: 380px;
 
-}
+    padding: 45px 40px;
 
-.loginBox p{
 
-    color:#d7d7d7;
+    background:
 
-    margin-bottom:30px;
+        rgba(255,255,255,0.10);
 
-    font-size:1.1rem;
 
-}
+    backdrop-filter: blur(12px);
 
-.loginBox input{
 
-    width:100%;
+    border-radius: 18px;
 
-    padding:15px;
 
-    border:none;
+    border:
 
-    border-radius:10px;
+        1px solid rgba(255,255,255,0.2);
 
-    margin-bottom:20px;
 
-    outline:none;
+    box-shadow:
 
-    font-size:1rem;
+        0 20px 50px rgba(0,0,0,0.35);
 
-    font-family:inherit;
+
+    text-align: center;
+
 
 }
 
-.loginBox button{
 
-    width:100%;
 
-    padding:15px;
+.loginBox h1 {
 
-    background:#bfa06f;
 
-    color:white;
+    color: white;
 
-    border:none;
 
-    border-radius:10px;
+    font-size: 2.4rem;
 
-    cursor:pointer;
 
-    transition:.35s;
+    font-weight: 400;
 
-    font-size:1rem;
+
+    margin-bottom: 20px;
+
 
 }
 
-.loginBox button:hover{
 
-    transform:translateY(-2px);
 
-    background:#c9ab79;
+.loginBox p {
+
+
+    color: rgba(255,255,255,0.85);
+
+
+    font-size: 1.15rem;
+
+
+    margin-bottom: 30px;
+
 
 }
 
-#errorMessage{
 
-    color:#ffb1b1;
 
-    margin-top:20px;
+.loginBox input {
+
+
+    width: 100%;
+
+
+    padding: 14px;
+
+
+    border: none;
+
+
+    border-radius: 8px;
+
+
+    font-family: inherit;
+
+
+    font-size: 1rem;
+
+
+    outline: none;
+
+
+    margin-bottom: 20px;
+
 
 }
 
-/* ==========================================================
+
+
+.loginBox button {
+
+
+    width: 100%;
+
+
+    padding: 14px;
+
+
+    border: none;
+
+
+    border-radius: 30px;
+
+
+    cursor: pointer;
+
+
+    background: #b99a68;
+
+
+    color: white;
+
+
+    font-size: 1.05rem;
+
+
+    font-family: inherit;
+
+
+    transition: 0.3s;
+
+
+}
+
+
+
+.loginBox button:hover {
+
+
+    background: #c9ac79;
+
+
+    transform: translateY(-2px);
+
+
+}
+
+
+
+#errorMessage {
+
+
+    margin-top: 15px;
+
+
+    color: #ffb5b5;
+
+
+    min-height: 20px;
+
+
+}
+
+
+
+/* =========================================
    PAGE PRINCIPALE
-========================================================== */
+========================================= */
 
-#mainPage{
 
-    display:none;
+#mainPage {
 
-    opacity:0;
 
-    transition:opacity 1s;
+    display: none;
 
-    padding:50px 20px 120px;
 
-}
+    padding: 50px 20px 100px;
 
-/* ==========================================================
-   MUSIQUE
-========================================================== */
 
-.musicContainer{
+    position: relative;
 
-    text-align:center;
 
-    margin-bottom:35px;
+    z-index: 2;
+
 
 }
 
-#musicButton{
 
-    padding:14px 30px;
 
-    background:#bfa06f;
 
-    color:white;
+/* =========================================
+   BOUTON MUSIQUE
+========================================= */
 
-    border:none;
 
-    border-radius:40px;
+.musicContainer {
 
-    cursor:pointer;
 
-    transition:.35s;
+    text-align: center;
 
-    font-size:1rem;
 
-}
+    margin-bottom: 45px;
 
-#musicButton:hover{
-
-    transform:scale(1.05);
 
 }
 
-/* ==========================================================
-   FEUILLE
-========================================================== */
 
-.paper{
 
-    position:absolute;
+#musicButton {
 
-    bottom:0;
 
-    width:100%;
+    border: none;
 
-    background:#fbf7f1;
 
-    border-radius:8px;
+    background: #b99a68;
 
-    padding:80px;
 
-    box-shadow:0 25px 60px rgba(0,0,0,.30);
+    color: white;
 
-    line-height:2;
 
-    transform:translateY(180px);
+    padding: 14px 32px;
 
-    opacity:0;
 
-}
+    border-radius: 30px;
 
-.paper h2{
 
-    margin-bottom:45px;
+    font-family: inherit;
 
-    font-size:2rem;
 
-    font-weight:500;
+    font-size: 1.1rem;
+
+
+    cursor: pointer;
+
+
+    transition: 0.3s;
+
 
 }
 
-.date{
 
-    text-align:right;
 
-    color:#666;
+#musicButton:hover {
 
-    font-style:italic;
 
-    margin-bottom:50px;
+    background: #c9ac79;
 
-}
 
-#letterText{
+    transform: translateY(-2px);
 
-    font-size:1.35rem;
 
 }
 
-/* ==========================================================
-   CARTE
-========================================================== */
 
-.mapSection{
 
-    margin-top:90px;
+/* =========================================
+   LETTRE
+========================================= */
 
-    text-align:center;
 
-}
+.letter {
 
-.mapSection h3{
 
-    color:white;
+    max-width: 850px;
 
-    font-size:2rem;
 
-    font-weight:400;
+    margin: auto;
 
-    margin-bottom:30px;
 
-}
+    background:
 
-.mapContainer{
+        #faf6ee;
 
-    position:relative;
 
-    width:1000px;
+    padding: 70px;
 
-    max-width:95%;
 
-    margin:auto;
+    border-radius: 5px;
 
-}
 
-.mapContainer img{
+    box-shadow:
 
-    width:100%;
 
-    display:block;
+        0 25px 60px rgba(0,0,0,0.25);
 
-    border-radius:12px;
 
-    box-shadow:0 15px 45px rgba(0,0,0,.35);
+    animation: appearLetter 1.5s ease;
+
 
 }
 
-/* ==========================================================
-   POINT SUR LA POLOGNE
-========================================================== */
 
-#polandMarker{
 
-    position:absolute;
+@keyframes appearLetter {
 
-    width:16px;
 
-    height:16px;
-
-    background:#ff3a3a;
-
-    border-radius:50%;
-
-    left:56.8%;
-
-    top:29%;
-
-    transform:translate(-50%,-50%);
-
-    box-shadow:0 0 20px red;
-
-    animation:pulse 2s infinite;
-
-}
-
-@keyframes pulse{
-
-    0%{
-
-        transform:translate(-50%,-50%) scale(1);
-
-    }
-
-    50%{
-
-        transform:translate(-50%,-50%) scale(1.6);
-
-    }
-
-    100%{
-
-        transform:translate(-50%,-50%) scale(1);
-
-    }
-
-}
-
-/* ==========================================================
-   ANIMATIONS
-========================================================== */
-
-.envelope.open .envelopeTop{
-
-    animation:openEnvelope 1.6s forwards;
-
-}
-
-.envelope.open .paper{
-
-    animation:paperUp 2s forwards;
-
-}
-
-@keyframes openEnvelope{
-
-    to{
-
-        transform:rotateX(-180deg);
-
-    }
-
-}
-
-@keyframes paperUp{
-
-    0%{
-
-        transform:translateY(180px);
+    from {
 
         opacity:0;
 
+        transform: translateY(25px);
+
     }
 
-    100%{
 
-        transform:translateY(0);
+    to {
 
         opacity:1;
 
+        transform: translateY(0);
+
     }
+
 
 }
 
-/* ==========================================================
-   RESPONSIVE
-========================================================== */
 
-@media(max-width:768px){
 
-    .loginBox{
 
-        width:95%;
+.date {
 
-        padding:35px;
+
+    text-align: right;
+
+
+    font-size: 1.2rem;
+
+
+    font-style: italic;
+
+
+    color: #777;
+
+
+    margin-bottom: 45px;
+
+
+}
+
+
+
+
+.letter h2 {
+
+
+    font-size: 2rem;
+
+
+    font-weight: 500;
+
+
+    margin-bottom: 35px;
+
+
+}
+
+
+
+
+.letterContent {
+
+
+    font-size: 1.35rem;
+
+
+    line-height: 1.9;
+
+
+}
+
+
+
+.letterContent p {
+
+
+    margin-bottom: 25px;
+
+
+}
+
+
+
+.signature {
+
+
+    margin-top: 50px;
+
+
+    font-style: italic;
+
+
+}
+
+
+
+
+/* =========================================
+   RESPONSIVE MOBILE
+========================================= */
+
+
+@media(max-width:700px) {
+
+
+
+    .loginBox {
+
+
+        width: 95%;
+
+
+        padding: 35px 25px;
+
 
     }
 
-    .paper{
 
-        padding:35px;
 
-    }
+    .loginBox h1 {
 
-    #letterText{
 
-        font-size:1.15rem;
+        font-size: 2rem;
+
 
     }
 
-    .paper h2{
 
-        font-size:1.6rem;
+
+
+    .letter {
+
+
+        padding: 35px 25px;
+
 
     }
 
-    .mapSection h3{
 
-        font-size:1.6rem;
+
+    .letter h2 {
+
+
+        font-size: 1.6rem;
+
 
     }
+
+
+
+
+    .letterContent {
+
+
+        font-size: 1.15rem;
+
+
+    }
+
 
 }
